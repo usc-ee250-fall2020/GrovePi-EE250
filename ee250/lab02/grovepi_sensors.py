@@ -66,7 +66,7 @@ while True:
 			obj = "OBJ PRES"
 		else:
 			setRGB(0,255,0)
-			obj = ""
+			obj = "         "
 
 		setText_norefresh(t + "cm " + obj + "\n" + d + "cm")
 
