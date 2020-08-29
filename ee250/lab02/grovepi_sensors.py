@@ -23,6 +23,19 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+from grovepi import *
+from grove_rgb_lcd import *
+from time import sleep
+
+# Connect the Rotary Angle Sensor to analog port A2
+potentiometer = 2
+
+# Connect the Ultrasonic ranger to digital port D4
+ultrasonic_ranger = 4
+
+setRGB(0,255,0)
+
+i = 0
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -31,8 +44,31 @@ if __name__ == '__main__':
     PORT = 4    # D4
 
     while True:
-        #So we do not poll the sensors too quickly which may introduce noise,
-        #sleep for a reasonable time of 200ms between each iteration.
-        time.sleep(0.2)
 
-        print(grovepi.ultrasonicRead(PORT))
+    	try:
+		# Read resistance from Potentiometer
+			i = grovepi.analogRead(potentiometer)
+			threshold = int(i / 2)
+			print(threshold)
+
+			time.sleep(0.2)
+			distance = ultrasonicRead(ultrasonic_ranger)
+			print(distant,'cm')
+
+			t = str(threshold)
+			d = str(distant)
+
+			if distant <= threshold:
+				print("Threshold reached")
+				setRGB(255,0,0)
+				setText(t + "cm  OBJ PRES\n" + d + "cm")
+			else:
+				setRGB(0,255,0)
+				setText(t + "cm\n" + d + "cm")
+
+		except TypeError:
+			print("Error")
+		except IOError:
+			print("Error")
+
+
