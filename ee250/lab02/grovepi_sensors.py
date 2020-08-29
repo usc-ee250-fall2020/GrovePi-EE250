@@ -68,7 +68,7 @@ while True:
 			setRGB(0,255,0)
 			obj = ""
 
-		setText(t + "cm" + obj + "\n" + d + "cm")
+		setText_norefresh(t + "cm " + obj + "\n" + d + "cm")
 
 
 
