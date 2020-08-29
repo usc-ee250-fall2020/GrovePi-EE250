@@ -63,10 +63,12 @@ while True:
 		if distant <= threshold:
 			print("Threshold reached")
 			setRGB(255,0,0)
-			setText(t + "cm  OBJ PRES\n" + d + "cm")
+			obj = "OBJ PRES"
 		else:
 			setRGB(0,255,0)
-			setText(t + "cm\n" + d + "cm")
+			obj = ""
+
+		setText(t + "cm" + obj + "\n" + d + "cm")
 
 
 
