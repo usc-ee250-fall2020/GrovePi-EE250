@@ -46,19 +46,20 @@ if __name__ == '__main__':
     while True:
 
     	try:
-		# Read resistance from Potentiometer
+
+			# Read resistance from Potentiometer
 			i = grovepi.analogRead(potentiometer)
 			threshold = int(i / 2)
 			print(threshold)
 
 			time.sleep(0.2)
 			distance = ultrasonicRead(ultrasonic_ranger)
-			print(distant,'cm')
+			print(distance,'cm')
 
 			t = str(threshold)
-			d = str(distant)
+			d = str(distance)
 
-			if distant <= threshold:
+			if distance <= threshold:
 				print("Threshold reached")
 				setRGB(255,0,0)
 				setText(t + "cm  OBJ PRES\n" + d + "cm")
