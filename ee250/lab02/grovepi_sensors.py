@@ -37,6 +37,7 @@ setRGB(0,255,0)
 
 i = 0
 
+
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
@@ -46,26 +47,29 @@ if __name__ == '__main__':
     while True:
 
     	try:
-
 			# Read resistance from Potentiometer
 			i = grovepi.analogRead(potentiometer)
 			threshold = int(i / 2)
 			print(threshold)
-
+			
 			time.sleep(0.2)
-			distance = ultrasonicRead(ultrasonic_ranger)
-			print(distance,'cm')
+			distant = ultrasonicRead(ultrasonic_ranger)
+			print(distant,'cm')
 
 			t = str(threshold)
-			d = str(distance)
+			d = str(distant)
 
-			if distance <= threshold:
+			if distant <= threshold:
 				print("Threshold reached")
 				setRGB(255,0,0)
 				setText(t + "cm  OBJ PRES\n" + d + "cm")
 			else:
 				setRGB(0,255,0)
 				setText(t + "cm\n" + d + "cm")
+
+
+
+		
 
 		except TypeError:
 			print("Error")
