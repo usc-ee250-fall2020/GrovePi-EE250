@@ -44,28 +44,26 @@ be true"""
 if __name__ == '__main__':
     PORT = 4    # D4
 
-    while True:
-
-    	try:
+	while True:
+		try:
 			# Read resistance from Potentiometer
-				i = grovepi.analogRead(potentiometer)
-				threshold = int(i / 2)
-				print(threshold)
-				
-				time.sleep(0.2)
-				distant = ultrasonicRead(ultrasonic_ranger)
-				print(distant,'cm')
+			i = grovepi.analogRead(potentiometer)
+			threshold = int(i / 2)
+			print(threshold)
 
-				t = str(threshold)
-				d = str(distant)
+			distant = ultrasonicRead(ultrasonic_ranger)
+			print(distant,'cm')
 
-				if distant <= threshold:
-					print("Threshold reached")
-					setRGB(255,0,0)
-					setText(t + "cm  OBJ PRES\n" + d + "cm")
-				else:
-					setRGB(0,255,0)
-					setText(t + "cm\n" + d + "cm")
+			t = str(threshold)
+			d = str(distant)
+
+			if distant <= threshold:
+				print("Threshold reached")
+				setRGB(255,0,0)
+				setText(t + "cm  OBJ PRES\n" + d + "cm")
+			else:
+				setRGB(0,255,0)
+				setText(t + "cm\n" + d + "cm")
 
 
 
@@ -75,5 +73,7 @@ if __name__ == '__main__':
 			print("Error")
 		except IOError:
 			print("Error")
+
+
 
 
