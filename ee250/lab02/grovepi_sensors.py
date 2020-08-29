@@ -53,6 +53,7 @@ while True:
 		threshold = int(i / 2)
 		print(threshold)
 
+		time.sleep(0.2)
 		distant = ultrasonicRead(ultrasonic_ranger)
 		print(distant,'cm')
 
