@@ -1,8 +1,11 @@
 """ EE 250L Lab 02: GrovePi Sensors
 
 List team members here.
+Mohaimen Syed (Solo)
 
 Insert Github repository link here.
+
+https://github.com/mohaimensyed/GrovePi-EE250.git
 """
 
 """python3 interpreters in Ubuntu (and other linux distros) will look in a 
@@ -27,12 +30,8 @@ from grovepi import *
 from grove_rgb_lcd import *
 from time import sleep
 
-# Connect the Rotary Angle Sensor to analog port A2
 
-
-# Connect the Ultrasonic ranger to digital port D4
-
-
+#Default Backlight set to green
 setRGB(0,255,0)
 
 i = 0
@@ -42,26 +41,32 @@ i = 0
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-    
+
+	# Connect the Rotary Angle Sensor to analog port A2
+    # Connect the Ultrasonic ranger to digital port D4
 	ultrasonic_ranger = 4
 	potentiometer = 2
 
 while True:
+
 	try:
+
 		# Read resistance from Potentiometer
 		i = grovepi.analogRead(potentiometer)
 		threshold = int(i / 2)
-		print(threshold)
+		print(threshold,'cm')
 
+		# Read distance from sensor
 		time.sleep(0.2)
-		distant = ultrasonicRead(ultrasonic_ranger)
-		print(distant,'cm')
+		distance = ultrasonicRead(ultrasonic_ranger)
+		print(distance,'cm')
 
 		t = str(threshold)
-		d = str(distant)
+		d = str(distance)
 
-		if distant <= threshold:
-			print("Threshold reached")
+		#Changes state if threshold reached
+		if distance <= threshold:
+			print("Threshold reached!")
 			setRGB(255,0,0)
 			obj = "OBJ PRES"
 		else:
@@ -71,11 +76,9 @@ while True:
 		setText_norefresh(t + "cm " + obj + "\n" + d + "cm")
 
 
-
-	
-
 	except TypeError:
 		print("Error")
+
 	except IOError:
 		print("Error")
 
