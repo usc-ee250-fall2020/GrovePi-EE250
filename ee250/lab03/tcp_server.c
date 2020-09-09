@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
      */
     socklen_t clilen;
 
-    struct sockaddr_in serv_addr, cli_addr;
+    struct sockaddr_in serv_addr, a;
     /* 3. What is a struct? What's the structure of sockaddr_in?
      *
      */
